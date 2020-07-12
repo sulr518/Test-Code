@@ -45,3 +45,14 @@ $bytes = [System.Text.Encoding]::Unicode.GetBytes($ps1_str)
 $encodedCommand = [Convert]::ToBase64String($bytes)
 echo $encodedCommand
 ~~~
+
+
+### Invoke-Expression - run ps code
+~~~
+$cmdstr = "powershell -EncodedCommand dwBoAG8AYQBtAGkACgA=";
+$cmdstr = Invoke-Expression "$cmdstr"
+
+#$scriptPath = $PSScriptRoot
+$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+#Invoke-Expression "$scriptPath\test.ps1"
+~~~
